@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { StandardCard, StandardList, DangerButton } from './shared-components';
+import { connect } from 'react-redux';
 
 
 class App extends Component {
   render() {
     return (
       <div className="app">
-
         <StandardCard>
-          <StandardList data={[1, 2, 3, 4, 5]} />
+          <StandardList data={this.props.users.map(user => user.name)} />
           <DangerButton />
         </StandardCard>
-
       </div>
     );
   }
 }
 
-export default App;
+const connectStateToProps = (state) => ({
+  users: state.users.list
+});
+
+export default connect(connectStateToProps)(App);

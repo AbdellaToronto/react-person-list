@@ -5,6 +5,8 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui';
 import orange from 'material-ui/colors/orange';
+import { Provider } from 'react-redux';
+import { appStore } from './redux-config';
 
 
 const theme = createMuiTheme({
@@ -14,9 +16,11 @@ const theme = createMuiTheme({
 });
 
 const MaterialThemedApp = props => (
-  <MuiThemeProvider {...props}>
-    <App />
-  </MuiThemeProvider>
+  <Provider store={appStore}>
+    <MuiThemeProvider {...props}>
+      <App />
+    </MuiThemeProvider>
+  </Provider>
 );
 
 
