@@ -1,16 +1,13 @@
 import { ACTIONS } from '../actions/user.actions';
 
 const DEFAULT_STATE = {
-  list: []
+  list: [],
 };
 
 export const UserReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case ACTIONS.ADD_ALL_USERS:
       return {...state, list: action.payload};
-
-    case 'ADD_USER':
-      return {...state, list: state.list.concat(action.payload)};
 
     default:
       return state;
