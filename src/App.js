@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { StandardCard, StandardList, DangerButton } from './shared-components';
 import { connect } from 'react-redux';
+import { getUsers } from './features/users/actions/user.actions';
 
 
 class App extends Component {
+
+  componentWillMount() {
+    this.props.getUsers();
+  }
+
   render() {
     return (
       <div className="app">
@@ -20,4 +26,8 @@ const connectStateToProps = (state) => ({
   users: state.users.list
 });
 
-export default connect(connectStateToProps)(App);
+const mapActionsToProps = {
+  getUsers: getUsers
+};
+
+export default connect(connectStateToProps, mapActionsToProps)(App);

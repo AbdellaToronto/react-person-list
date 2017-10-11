@@ -1,25 +1,12 @@
-
+import { ACTIONS } from '../actions/user.actions';
 
 const DEFAULT_STATE = {
-  list: [
-    {
-      name: 'Della'
-    },
-    {
-      name: 'Leah'
-    },
-    {
-      name: 'Paul'
-    },
-    {
-      name: 'Mary'
-    },
-    ]
+  list: []
 };
 
 export const UserReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case 'GET_ALL_USERS':
+    case ACTIONS.ADD_ALL_USERS:
       return {...state, list: action.payload};
 
     case 'ADD_USER':
